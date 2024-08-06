@@ -1,5 +1,7 @@
 # Kafka Producer Spring Boot Application
 
+# Warning: under development
+
 ## Overview
 
 This Spring Boot application acts as a Kafka producer. It sends messages to a Kafka topic using the Apache Kafka client.
