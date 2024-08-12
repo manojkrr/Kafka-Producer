@@ -1,9 +1,18 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /kafka-producer
+
 spring:
   application:
     name: Kafka-Producer
 
   kafka:
+    client-id: spring-boot-application-kafka
     bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+    topic:
+      name: test-topic1

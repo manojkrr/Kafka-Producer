@@ -1,4 +1,4 @@
-package org.humber.kafkaproducer;
+package com.producer.kafkaproducer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
