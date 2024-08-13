@@ -1,8 +1,9 @@
-# Kafka Producer Spring Boot Application
+# Simple Kafka Producer Spring Boot Application
 
 ## Overview
 
-This Spring Boot application acts as a Kafka producer. It sends messages to a Kafka topic using the Apache Kafka client.
+This Spring Boot application acts as a Kafka producer. 
+It sends messages to a Kafka topic in <u>_**STRINGS**_</u> using the Apache Kafka client.
 
 ## Prerequisites
 
@@ -12,14 +13,14 @@ This Spring Boot application acts as a Kafka producer. It sends messages to a Ka
 
 ## Build the application
 
-```
+```shell
 mvn clean install
 ```
 
 ## Run the application
 
 ```shell
-java -jar target/KafkaProducer-0.0.1-SNAPSHOT.jar
+java -jar target/kafka-producer-0.0.1-SNAPSHOT.jar
 ```
 
 ## Swagger
