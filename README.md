@@ -55,6 +55,8 @@ brew services start kafka
 
 ### Create a Kafka topic
 
+Scroll to the right to see the full command
+
 ```shell
 kafka-topics --create --topic <topic-name> --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
 ```
