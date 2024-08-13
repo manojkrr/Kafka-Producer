@@ -15,4 +15,4 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       acks: all
     topic:
-      name: test-topic1
+      name: test-topic

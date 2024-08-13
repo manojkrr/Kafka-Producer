@@ -32,8 +32,6 @@ public class KafkaProducerService {
     }
 
     public CompletableFuture<SendResult<String, String>> sendSynchronously(String message) {
-        return retryTemplate.execute(context -> {
-            return kafkaTemplate.send(kafkaTopicName, message);
-        });
+        return retryTemplate.execute(context -> kafkaTemplate.send(kafkaTopicName, message));
     }
 }

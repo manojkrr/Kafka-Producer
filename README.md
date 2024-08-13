@@ -16,6 +16,16 @@ This Spring Boot application acts as a Kafka producer. It sends messages to a Ka
 mvn clean install
 ```
 
+## Run the application
+
+```shell
+java -jar target/KafkaProducer-0.0.1-SNAPSHOT.jar
+```
+
+## Swagger
+
+Access the Swagger UI at http://localhost:8081/kafka-producer/swagger-ui.html
+
 ## Some useful commands to work with Kafka
 
 ### Start Zookeeper
@@ -58,6 +68,12 @@ kafka-topics --list --bootstrap-server localhost:9092
 
 ```shell
 kafka-console-consumer --topic <topic-name> --from-beginning --bootstrap-server localhost:9092
+```
+
+In this case
+
+```shell
+kafka-console-consumer --topic test-topic --from-beginning --bootstrap-server localhost:9092
 ```
 
 ### Stop a Kafka consumer
