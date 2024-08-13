@@ -2,8 +2,8 @@
 
 ## Overview
 
-This Spring Boot application acts as a Kafka producer. 
-It sends messages to a Kafka topic in <u>_**STRINGS**_</u> using the Apache Kafka client.
+* This Spring Boot application acts as a Kafka producer.
+* It sends messages to a Kafka topic in <u>_**STRINGS**_</u> using the Apache Kafka client.
 
 ## Prerequisites
 
