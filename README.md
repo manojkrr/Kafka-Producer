@@ -1,116 +1,156 @@
 # Simple Kafka Producer Spring Boot Application
 
-## Overview
+## 🧾 Overview
 
-* This Spring Boot application acts as a Kafka producer.
-* It sends messages to a Kafka topic in <u>_**STRINGS**_</u> using the Apache Kafka client.
+* This Spring Boot application acts as a Kafka **Producer**.
+* It sends messages to a Kafka topic as **Strings** using the Apache Kafka client.
 
-## Prerequisites
+---
+
+## ✅ Prerequisites
 
 - Java 11 or later
 - Apache Kafka and Zookeeper installed and running
 - Maven
 
-## Build the application
+---
 
-```shell
+## 🏗️ Build the Application
+
+```bash
 mvn clean install
-```
+````
 
-## Run the application
+---
 
-```shell
+## ▶️ Run the Application
+
+```bash
 java -jar target/kafka-producer-0.0.1-SNAPSHOT.jar
 ```
 
-## Swagger
+---
 
-Access the Swagger UI at http://localhost:8081/kafka-producer/swagger-ui.html
+## 📬 REST Endpoints
 
-## Some useful commands to work with Kafka
+The application exposes two REST APIs to send messages to Kafka:
 
-### Start Zookeeper
+### 1. Send Asynchronous Message
 
-```shell
-zookeeper-server-start <config-folder>/zookeeper.properties
+* **Endpoint:** `POST /kafka/send`
+* **Query Params:**
+
+    * `message` (required): The message content
+
+**Example:**
+
+```bash
+curl -X POST "http://localhost:8081/kafka/send?message=HelloKafka"
 ```
 
-OR
+---
 
-```shell
+### 2. Send Synchronous Message
+
+* **Endpoint:** `POST /kafka/send-sync`
+* **Query Params:**
+
+    * `message` (required): The message content
+
+**Example:**
+
+```bash
+curl -X POST "http://localhost:8081/kafka/send-sync?message=HelloSync"
+```
+
+On success:
+✅ `Message sent to Kafka topic [asynchronously/synchronously]`
+On error:
+❌ `Failed to send message: <error-details>`
+
+---
+
+## 🔎 Swagger
+
+Access Swagger UI at:
+
+```
+http://localhost:8081/kafka-producer/swagger-ui.html
+```
+
+---
+
+## 💬 Some Useful Kafka Commands
+
+### ▶️ Start Zookeeper
+
+```bash
+zookeeper-server-start <config-folder>/zookeeper.properties
+# or
 brew services start zookeeper
 ```
 
-### Start Kafka
+### ▶️ Start Kafka
 
-```shell
+```bash
 kafka-server-start <config-folder>/server.properties
-```
-
-OR
-
-```shell
+# or
 brew services start kafka
 ```
 
-### Create a Kafka topic
+### ➕ Create Kafka Topic
 
-Scroll to the right to see the full command
-
-```shell
-kafka-topics --create --topic <topic-name> --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
+```bash
+kafka-topics --create --topic test-topic --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
 ```
 
-### List Kafka topics
+### 📃 List Topics
 
-```shell
+```bash
 kafka-topics --list --bootstrap-server localhost:9092
 ```
 
-### Start a Kafka consumer
+### 👂 Start a Kafka Consumer (console)
 
-```shell
-kafka-console-consumer --topic <topic-name> --from-beginning --bootstrap-server localhost:9092
-```
-
-In this case
-
-```shell
+```bash
 kafka-console-consumer --topic test-topic --from-beginning --bootstrap-server localhost:9092
 ```
 
-### Stop a Kafka consumer
+### ❌ Delete a Topic
 
-```shell
-kafka-console-consumer --topic <topic-name> --from-beginning --bootstrap-server localhost:9092
+```bash
+kafka-topics --delete --topic test-topic --bootstrap-server localhost:9092
 ```
 
-### Remove a Kafka topic
+### ⏹️ Stop Kafka & Zookeeper
 
-```shell
-kafka-topics --delete --topic <topic-name> --bootstrap-server localhost:9092
-```
-
-### Stop Kafka
-
-```shell
+```bash
 kafka-server-stop
-```
-
-OR
-
-```shell
-brew services stop kafka
-```
-
-### Stop Zookeeper
-
-```shell
 zookeeper-server-stop
-```
-
-OR
-
-```shell
+# or via Homebrew
+brew services stop kafka
 brew services stop zookeeper
 ```
+
+---
+
+## 🧪 Test the Producer
+
+You can test the endpoints via:
+
+* Curl (examples above)
+* Postman
+* Browser:
+
+  ```
+  http://localhost:8081/kafka/send?message=TestFromBrowser
+  ```
+
+---
+
+## 🛠️ Tech Stack
+
+* Java 11+
+* Spring Boot
+* Apache Kafka
+* Swagger UI
