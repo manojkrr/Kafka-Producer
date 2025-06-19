@@ -1,0 +1,27 @@
+@startuml
+title Kafka Producer and Consumer Architecture
+
+left to right direction
+
+actor user
+
+node "Kafka Producer Application Server" as ProducerServer {
+    component "KafkaProducerController" as ProducerController
+    component "KafkaProducerService" as ProducerService
+}
+
+node "Kafka Cluster" as KafkaCluster {
+    queue "Topic: test-topic" as TopicTest
+}
+
+node "Kafka Consumer Application Server" as ConsumerServer {
+    component "MessageConsumer Service" as KafkaConsumer
+}
+
+user --> ProducerController : sends messages
+ProducerController --> ProducerService : calls
+ProducerService --> TopicTest : produces messages
+
+KafkaConsumer <-up- TopicTest : consumes messages
+
+@enduml
